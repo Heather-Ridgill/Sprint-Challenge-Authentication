@@ -37,7 +37,7 @@ db.findBy({ username })
   }
 })
 .catch(err => {
-  res.status(500).json({ message: "Sorry, no token for you..." });
+  res.status(500).json({ message: "Sorry, cant log in .... " });
   });
 });
 
