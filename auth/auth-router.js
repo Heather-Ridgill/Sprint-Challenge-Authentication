@@ -25,14 +25,15 @@ db.addUser(user)
 router.post('/login', (req, res) => {
   // implement login
 let { username, password} = req.body;
-console.log(req.body)
+// console.log(req.body)
 db.findBy({ username })
 .first()
 .then(user => {
   if (user && bcrypt.compareSync (password, user.password)) {
-    let token = generateToken(user);
     
-    res.status(200).json({ message: `Welcome ${username}! Have a token: `, 
+    const token = generateToken(user);
+    console.log(user)
+    res.status(200).json({ message: `Welcome ${user.username}! Have a token: `, 
   token: token
  });
   } else {
