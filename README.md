@@ -47,7 +47,7 @@ it hashes and encrypts the passwords
 
 - [ ] What does bcrypt do to slow down attackers?
 
-With the hashing, it makes it near impossible to break into and crack the password. 
+With the hashing, it makes it near impossible to break into and crack the password. You can change the hashing calculation to define how difficult it is in time taken. 
 
 - [ ] What are the three parts of the JSON Web Token?
 

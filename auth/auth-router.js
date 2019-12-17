@@ -1,6 +1,7 @@
 const bcrypt = require(`bcryptjs`);
 const db = require(`../api/apiHelper`);
 const jwt = require (`jsonwebtoken`);
+const secrets = require (`../config/secrets`);
 
 
 
@@ -27,12 +28,10 @@ router.post('/login', (req, res) => {
 let { username, password} = req.body;
 // console.log(req.body)
 db.findBy({ username })
-.first()
 .then(user => {
   if (user && bcrypt.compareSync (password, user.password)) {
     
     const token = generateToken(user);
-    console.log(user)
     res.status(200).json({ message: `Welcome ${user.username}! Have a token: `, 
   token: token
  });
@@ -56,7 +55,7 @@ function generateToken(user) {
 
   const token = jwt.sign(payload, secrets.jwtSecrets, options);
   console.log(token)
-  return token;
+  return token
 }
 
 module.exports = router;
